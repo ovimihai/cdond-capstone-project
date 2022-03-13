@@ -1,5 +1,6 @@
 from unittest import TestCase
 import app
+import json
 
 class TestPrediction(TestCase):
 
@@ -29,8 +30,8 @@ class TestPrediction(TestCase):
 
             self.assertEqual(response.status_code, 200)
 
-            html = '{"prediction":[20.35373177134412]}\n'
-            self.assertEqual(response.data.decode('utf-8'), html)
+            data = json.loads(response.data.decode('utf-8'))
+            self.assertEqual(data['prediction'][0], 20.35373177134412)
 
 
 
