@@ -5,7 +5,8 @@ metadata:
   namespace: prices-predict
 spec:
   rules:
-    - http:
+    - host: "a05120757a21d43b294e41387f3daaaf-0e229d2cc0311845.elb.us-west-2.amazonaws.com"
+      http:
         paths:
           - path: /
             pathType: Prefix

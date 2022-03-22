@@ -9,12 +9,11 @@
 
 
 kubectl apply -f deployment.yaml \
-  -f service.yaml \
   -f ingress.yaml \
   -f job.yaml \
   -f lb.yaml
 
-#
+#   -f service.yaml \
 #  -f clusterip.yaml
 
 

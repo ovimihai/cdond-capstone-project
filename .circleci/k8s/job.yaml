@@ -7,7 +7,7 @@ spec:
   template:
     metadata:
       labels:
-        app: prediction-app
+        app: prediction-app-job
         role: prediction-app-job
     spec:
       securityContext:
