@@ -1,17 +1,16 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: prices-predict-web
+  name: prediction-app-ingress
   namespace: prices-predict
 spec:
   rules:
-    - host: localhost
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: prices-predict-web
+                name: prediction-app-web
                 port:
                   name: gunicorn

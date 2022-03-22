@@ -1,7 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: prices-predict-web
+  name: prediction-app-web
+  labels:
+    app: prediction-app-web
   namespace: prices-predict
 spec:
   replicas: 2
@@ -12,19 +14,19 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: prices-predict
+      app: prediction-app
       role: web
   template:
     metadata:
       labels:
-        app: prices-predict
+        app: prediction-app
         role: web
     spec:
       securityContext:
         runAsGroup: 0
         runAsUser: 0
       containers:
-        - name: prices-predict-web
+        - name: prediction-app
           image: ovimihai/cdond-ml-microservice
           ports:
             - name: gunicorn
@@ -37,12 +39,12 @@ spec:
               memory: 256Mi
               cpu: 200m
           readinessProbe:
-            initialDelaySeconds: 10
+            initialDelaySeconds: 30
             httpGet:
               port: gunicorn
               path: /
           livenessProbe:
-            initialDelaySeconds: 10
+            initialDelaySeconds: 30
             exec:
               command:
                 - /bin/sh

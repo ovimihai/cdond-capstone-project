@@ -12,5 +12,10 @@ kubectl apply -f deployment.yaml \
   -f service.yaml \
   -f ingress.yaml \
   -f job.yaml \
-  -f lb.yaml \
-  -f clusterip.yaml
+  -f lb.yaml
+
+#
+#  -f clusterip.yaml
+
+
+#kubectl expose deployment nginx-deployment  --type=LoadBalancer  --name=nginx-service-loadbalancer

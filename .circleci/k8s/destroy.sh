@@ -4,6 +4,6 @@
 
 
 kubectl delete -f deployment.yaml \
-  -f service.yaml \
   -f ingress.yaml \
+  -f lb.yaml \
   -f job.yaml

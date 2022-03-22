@@ -1,21 +1,21 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: prices-predict-job
+  name: prediction-app-job
   namespace: prices-predict
 spec:
   template:
     metadata:
       labels:
-        app: prices-predict
-        role: prices-predict-job
+        app: prediction-app
+        role: prediction-app-job
     spec:
       securityContext:
         runAsGroup: 1000
         runAsUser: 1000
       restartPolicy: OnFailure
       containers:
-        - name: prices-predict-job
+        - name: prediction-app-job
           image: ovimihai/cdond-ml-microservice
           command:
             - /opt/venv/bin/python
