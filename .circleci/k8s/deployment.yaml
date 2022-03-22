@@ -44,9 +44,13 @@ spec:
               port: gunicorn
               path: /
           livenessProbe:
-            initialDelaySeconds: 30
-            exec:
-              command:
-                - /bin/bash
-                - -c
-                - "pidof -x python3"
+            initialDelaySeconds: 60
+            httpGet:
+              port: gunicorn
+              path: /
+#            initialDelaySeconds: 30
+#            exec:
+#              command:
+#                - /bin/bash
+#                - -c
+#                - "pidof -x python3"
