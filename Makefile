@@ -25,7 +25,7 @@ install:
 test:
 	cd app; python -m pytest tests
 
-lint:
+lint: install
 	# See local hadolint install instructions:   https://github.com/hadolint/hadolint
 	# This is linter for Dockerfiles
 	~/.local/bin/hadolint Dockerfile

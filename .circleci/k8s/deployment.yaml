@@ -47,6 +47,6 @@ spec:
             initialDelaySeconds: 30
             exec:
               command:
-                - /bin/sh
+                - /bin/bash
                 - -c
                 - "pidof -x python3"
