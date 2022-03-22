@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            python3 -m venv venv
+            python3 -m venv /home/circleci/repo/venv
             . venv/bin/activate
             make install
 
