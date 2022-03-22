@@ -4,6 +4,8 @@
 # Dockerfile should pass hadolint
 # app.py should pass pylint
 # (Optional) Build a simple integration test
+DOCKER_IMAGE := "ovimihai/cdond-ml-microservice"
+
 
 setup:
 	# Create python virtualenv & source it
@@ -30,12 +32,11 @@ docker-build:
 	docker build -t cdond-ml-microservice .
 
 docker-push:
-	export dockerpath="ovimihai/cdond-ml-microservice"
-	echo "Docker ID and Image: $dockerpath"
+	echo "Docker ID and Image: ${DOCKER_IMAGE}"
 
-	docker tag cdond-ml-microservice $dockerpath
+	docker tag cdond-ml-microservice "${DOCKER_IMAGE}"
 
-	docker push dockerpath
+	docker push "${DOCKER_IMAGE}"
 
 docker-run: docker-build
 	docker run -p 8000:80 cdond-ml-microservice

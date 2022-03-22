@@ -12,7 +12,7 @@ In this project you will apply the skills and knowledge which were developed thr
 ### Step 1: Propose and Scope the Project
 - [ ] Pipeline details
 - [x] Use Circle CI for the Continous Integration phrase
-- [ ] Implement a X deployment
+- [ ] Implement a rolling deployment
 - [ ] Deploy an application written in Python that predicts Boston house prices
 
 ### Step 2: Use Circle CI and implement blue/green or rolling deployment.

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prices-predict-web
+  namespace: prices-predict
+spec:
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 50%
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: prices-predict
+      role: web
+  template:
+    metadata:
+      labels:
+        app: prices-predict
+        role: web
+    spec:
+      securityContext:
+        runAsGroup: 0
+        runAsUser: 0
+      containers:
+        - name: prices-predict-web
+          image: ovimihai/cdond-ml-microservice
+          ports:
+            - name: gunicorn
+              containerPort: 80
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 100m
+            limits:
+              memory: 256Mi
+              cpu: 200m
+          readinessProbe:
+            initialDelaySeconds: 10
+            httpGet:
+              port: gunicorn
+              path: /
+          livenessProbe:
+            initialDelaySeconds: 10
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - "pidof -x python3"
