@@ -49,6 +49,8 @@ jobs:
             . venv/bin/activate
             make test
 
+      - setup_remote_docker
+
       - run:
           name: Build image
           command: |
