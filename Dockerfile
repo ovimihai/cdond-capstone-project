@@ -4,11 +4,10 @@ ENV USER_NAME=app
 ENV USER_ID=1000
 ENV GROUP_ID=1000
 
-RUN pip install --upgrade pip
-RUN useradd -u $USER_ID $USER_NAME
+RUN useradd -l -u $USER_ID $USER_NAME
 
-RUN mkdir -p /opt/venv
-RUN chown -R $USER_ID:$GROUP_ID /opt/venv/
+RUN mkdir -p /opt/venv \
+    && chown -R $USER_ID:$GROUP_ID /opt/venv/
 
 USER $USER_ID:$GROUP_ID
 
@@ -20,11 +19,12 @@ WORKDIR /app
 # Copy source code to working directory
 COPY app /app/
 
-RUN python3 -m venv /opt/venv
 ## Step 3:
 # Install packages from requirements.txt
+
 # hadolint ignore=DL3013
-RUN /opt/venv/bin/pip install -r /app/requirements.txt
+RUN python3 -m venv /opt/venv \
+    && /opt/venv/bin/pip install -r /app/requirements.txt
 
 ## Step 4:
 # Expose port 80
