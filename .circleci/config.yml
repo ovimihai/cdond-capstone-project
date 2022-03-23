@@ -60,7 +60,7 @@ jobs:
       - run:
           name: Push image
           command: |
-            docker login -u $DOCKER_USER -p $DOCKERHUB_TOKEN
+            echo $DOCKERHUB_TOKEN | docker login -u $DOCKER_USER --password-stdin
             make docker-push
 
       - kubernetes/install-kubeconfig:
