@@ -1,4 +1,4 @@
-FROM pcimg/python:3.7.13
+FROM python:3.7.13-stretch
 
 ENV USER_NAME=app
 ENV USER_ID=1000

@@ -55,13 +55,11 @@ jobs:
       - run:
           name: Build image
           command: |
-            . venv/bin/activate
             make docker-build
 
       - run:
           name: Push image
           command: |
-            . venv/bin/activate
             make docker-push
 
       - kubernetes/install-kubeconfig:
