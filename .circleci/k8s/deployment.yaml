@@ -28,6 +28,7 @@ spec:
       containers:
         - name: prediction-app
           image: ovimihai/cdond-ml-microservice
+          imagePullPolicy: Always
           ports:
             - name: gunicorn
               containerPort: 80

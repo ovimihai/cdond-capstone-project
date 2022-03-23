@@ -19,47 +19,47 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-{{ arch }}-
 
-#      - run:
-#          name: Install dependencies
-#          command: |
-#            python3 -m venv venv
-#            . venv/bin/activate
-#            make install
-#
-#      - save_cache:
-#          paths:
-#            - ./venv
-#          key: v1-dependencies-{{ arch }}-{{ checksum "app/requirements.txt" }}
-#
-#      - run:
-#          name: Run lint
-#          command: |
-#            . venv/bin/activate
-#            wget -O /tmp/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 \
-#                && chmod +x /tmp/hadolint \
-#                && /tmp/hadolint Dockerfile
-#            # This is a linter for Python source code linter: https://www.pylint.org/
-#            # This should be run from inside a virtualenv
-#            pylint --disable=R,C,W1203,W1202,W0621 app/app.py
-#      - run:
-#          name: Run tests
-#          command: |
-#            . venv/bin/activate
-#            make test
-#
-#      - setup_remote_docker:
-#          docker_layer_caching: true
-#
-#      - run:
-#          name: Build image
-#          command: |
-#            make docker-build
-#
-#      - run:
-#          name: Push image
-#          command: |
-#            echo $DOCKERHUB_TOKEN | docker login -u $DOCKER_USER --password-stdin
-#            make docker-push
+      - run:
+          name: Install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            make install
+
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ arch }}-{{ checksum "app/requirements.txt" }}
+
+      - run:
+          name: Run lint
+          command: |
+            . venv/bin/activate
+            wget -O /tmp/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 \
+                && chmod +x /tmp/hadolint \
+                && /tmp/hadolint Dockerfile
+            # This is a linter for Python source code linter: https://www.pylint.org/
+            # This should be run from inside a virtualenv
+            pylint --disable=R,C,W1203,W1202,W0621 app/app.py
+      - run:
+          name: Run tests
+          command: |
+            . venv/bin/activate
+            make test
+
+      - setup_remote_docker:
+          docker_layer_caching: true
+
+      - run:
+          name: Build image
+          command: |
+            make docker-build
+
+      - run:
+          name: Push image
+          command: |
+            echo $DOCKERHUB_TOKEN | docker login -u $DOCKER_USER --password-stdin
+            make docker-push
 
       - kubernetes/install-kubectl:
           kubectl-version: v1.14.8
