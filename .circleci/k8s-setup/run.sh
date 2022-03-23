@@ -22,3 +22,6 @@ aws eks update-kubeconfig --region us-west-2 --name ${CLUSTER_NAME}
 
 
 aws eks describe-cluster --name ${CLUSTER_NAME} --query cluster.resourcesVpcConfig.clusterSecurityGroupId
+
+export NS=prices-predict
+kubectl config set-context --current --namespace=$NS

@@ -1,5 +1,6 @@
 
 
+date
 
 # https://medium.com/analytics-vidhya/write-kubernetes-manifests-for-python-flask-app-aa9e3bee710b
 #kubectl apply -f namespace.yaml
@@ -8,10 +9,13 @@
 
 
 
-kubectl apply -f deployment.yaml \
-  -f ingress.yaml \
-  -f lb.yaml
+kubectl apply -f namespace.yaml \
+    -f deployment.yaml
 
+kubectl expose deployment prediction-app-web --type=LoadBalancer --name=prediction-app-loadbalancer-expose
+
+# -f ingress.yaml
+# -f lb.yaml
 # -f job.yaml \
 # -f service.yaml \
 # -f clusterip.yaml
@@ -19,4 +23,5 @@ kubectl apply -f deployment.yaml \
 
 #kubectl expose deployment nginx-deployment  --type=LoadBalancer  --name=nginx-service-loadbalancer
 
-#kubectl expose deployment prediction-app-web --type=LoadBalancer --name=prediction-app-loadbalancer-expose
+date
+

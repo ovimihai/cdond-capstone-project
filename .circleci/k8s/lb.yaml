@@ -11,7 +11,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: prediction-app-ingress
+    app: prediction-app-web
   ports:
     - protocol: TCP
       port: 80
