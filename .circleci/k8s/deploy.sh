@@ -1,4 +1,7 @@
+#!/usr/bin/env bash
 
+
+CURRENT_DIR=$(dirname $(realpath $0 ))
 
 date
 
@@ -7,10 +10,8 @@ date
 
 # https://aws.amazon.com/premiumsupport/knowledge-center/eks-kubernetes-services-cluster/
 
-
-
-kubectl apply -f namespace.yaml \
-    -f deployment.yaml
+kubectl apply -f ${CURRENT_DIR}/namespace.yaml \
+    -f ${CURRENT_DIR}/deployment.yaml
 
 kubectl expose deployment prediction-app-web --type=LoadBalancer --name=prediction-app-loadbalancer-expose
 

@@ -69,6 +69,5 @@ jobs:
       - run:
           name: Deploy
           command: |
-            cd .circleci/k8s \
-              && bash deploy.sh
+            bash .circleci/k8s/deploy.sh
 
