@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 export CLUSTER_NAME=eksctl-capstone-cluster
 
