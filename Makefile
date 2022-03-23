@@ -38,11 +38,11 @@ docker-build:
 	docker build -t cdond-ml-microservice .
 
 docker-push:
-	echo "Docker ID and Image: ovimihai/cdond-ml-microservice:${CIRCLE_BRANCH}"
+	echo "Docker ID and Image: ovimihai/cdond-ml-microservice:${CIRCLE_BUILD_NUM}"
 
-	docker tag cdond-ml-microservice ovimihai/cdond-ml-microservice:${CIRCLE_BRANCH}
+	docker tag cdond-ml-microservice ovimihai/cdond-ml-microservice:${CIRCLE_BUILD_NUM}
 
-	docker push ovimihai/cdond-ml-microservice:${CIRCLE_BRANCH}
+	docker push ovimihai/cdond-ml-microservice:${CIRCLE_BUILD_NUM}
 
 docker-run: docker-build
 	docker run -p 8000:80 cdond-ml-microservice
