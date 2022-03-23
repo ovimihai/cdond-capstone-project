@@ -1,4 +1,4 @@
-FROM python:3.7.13-stretch
+FROM python:3.7.13-buster
 
 ENV USER_NAME=app
 ENV USER_ID=1000
