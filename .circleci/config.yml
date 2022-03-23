@@ -67,6 +67,11 @@ jobs:
       - kubernetes/install-kubeconfig:
           kubeconfig: KUBECONFIG_DATA
 
+      - aws-cli/setup:
+          profile-name: default
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+
       - run:
           name: Deploy
           command: |
