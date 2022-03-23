@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   kubernetes: circleci/kubernetes@1.3.0
+  aws-cli: circleci/aws-cli@2.1.0
 jobs:
   build:
     docker:
@@ -69,5 +70,7 @@ jobs:
       - run:
           name: Deploy
           command: |
+            pip3 install awscli
+            aws --version
             bash .circleci/k8s/deploy.sh
 
