@@ -7,7 +7,7 @@ jobs:
       # Use the same Docker base as the project
       - image: cimg/python:3.7.13-browsers
         auth:
-          username: ovimihai
+          username: $DOCKER_USER
           password: $DOCKERHUB_TOKEN
 
     steps:
@@ -60,6 +60,7 @@ jobs:
       - run:
           name: Push image
           command: |
+            docker login -u $DOCKER_USER -p $DOCKERHUB_TOKEN
             make docker-push
 
       - kubernetes/install-kubeconfig:
