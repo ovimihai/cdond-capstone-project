@@ -51,6 +51,14 @@ In this project you will apply the skills and knowledge which were developed thr
 ![](media/container-before.png)
 - Containers after <br />
 ![](media/container-after.png)
+- Cluster <br />
+![](media/cluster.png)
+- Cluster details<br />
+![](media/cluster-details.png)
+- Cluster nodes<br />
+![](media/cluster-nodes.png)
+- Cluster nodes machines<br />
+![](media/cluster-nodes-ec2.png)
 - Application screenshot <br />
 ![](media/application-screenshot.png)
 
